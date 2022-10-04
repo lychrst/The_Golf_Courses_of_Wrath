@@ -1,15 +1,3 @@
-
-# The Golf Courses of Wrath:  
-Modeling Water Usage Under Drought Conditions
-
-Author: Chris Lyons, October 2022
-
-![Mead](/hydro2/Drought-before-after.jpg?raw=true)
-## Badges  
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)  
-
-
-# Table of contents  
 # The Golf Courses of Wrath:  
 ## Modeling Water Usage Under Drought Conditions
 
