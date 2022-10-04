@@ -50,7 +50,7 @@ The Y-intercept for the mulitple linear regression model when standardized was 8
 
         Positive values indicate more water withdraw and negative values indicate less water withdraw.  With the exception of irrigation with surface water, all of the most important varaibles were weather related.  Unemployment was next.  Multi-unit and metro living were significantly less important than weather in this model. 
 
-        ![Per Capita](/hydro2/2000_Facebook_Prophet_Forecast.png?raw=true)
+        ![Per Capita](/hydro2/Per_capita_variables.png?raw=true)
 
 4. [Facebook Prophet Forcasting](#paragraph2)
  
