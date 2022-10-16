@@ -1,9 +1,10 @@
+
 # The Golf Courses of Wrath:  
 ## Modeling Water Usage Under Drought Conditions
 
 Author: Chris Lyons, October 2022
 
-![Mead](/hydro2/Drought-before-after.jpg?raw=true)
+![Mead](/images/Drought-before-after.jpg?raw=true)
 ## Badges  
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)  
 
@@ -13,17 +14,22 @@ Author: Chris Lyons, October 2022
 - [Definitions](https://github.com/lychrst/The_Golf_Courses_of_Wrath/blob/main/Definitions.ipynb)
 - [Data Loading, Exploration, and Cleaning](https://github.com/lychrst/The_Golf_Courses_of_Wrath/blob/main/Data_Loading_Exploration_and_Cleaning.ipynb)
 - [Model Development](https://github.com/lychrst/The_Golf_Courses_of_Wrath/blob/main/Water_Withdraw_and_Consumption_Model_Development.ipynb)
+- [Functions]
+- [References](https://github.com/lychrst/The_Golf_Courses_of_Wrath/tree/main/references)
+- [Video Presentation](https://vimeo.com/756490938)
+
+
 
 ### Table of Contents  
 - [Introduction](#introduction)
 - [Data](#data)
 - [Linear Regression Analyses](#linear-regression-analyses)    
-    
      -  [Golf Water Consumption](#golf-water-consumption)
      -  [Net Domestic Withdraw](#net-domestic-withdraw)
      - [Per Capita Withdraw](#per-capita-withdraw)
 - [Facebook Prophet Forecasting](#facebook-prophet-forecasting)
 - [2015 Colorado River Basin Water Usage Versus Reservoir and Aquifer Depletion](#2015-colorado-river-basin-water-usage-versus-reservoir-and-aquifer-depletion)
+
 
 ##  Introduction
 The reappearance of [hunger stones in European rivers](https://www.businessinsider.com/centuries-old-hunger-stones-reappear-as-european-rivers-run-dry-2022-8?op=1), [human remains dumped in Lake Mead](https://abcnews.go.com/US/5th-set-human-remains-found-receding-lake-mead/story?id=88512428), [a sunken Nazi fleet](https://www.businessinsider.com/photos-europes-drought-exposes-nazi-fleet-sunk-world-war-ii-2022-8), and [the submerged 14th century Mesta bridge](https://www.reuters.com/world/europe/hitting-rock-bottom-drought-heat-drain-spanish-reservoirs-2022-08-10/) are a few of the stories that have appeared in 2022.  The factor common to them all is the depletion of water reserves, a situation that has huge implications for both industry and quality / existence of life. 
