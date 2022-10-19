@@ -56,7 +56,7 @@ def correlation_pairs(data, lower, upper):
     Parameters
     ----------
     Data: pandas DataFrame 
-    DataFrame containing the data being analzed for correlations.
+    DataFrame containing the data being analyzed for correlations.
     
     lower: int or float
     The lower percentage threshold.  All correlation pairs will have values at
@@ -81,9 +81,9 @@ def correlation_pairs(data, lower, upper):
     span = df[(df.cc>lower) & (df.cc <upper)]
     return span
 
-def standardized_model(x, y):
-      '''Creates a model that uses standard deviation to compare the impact
-     dependent variables have on the independent variable. 
+def standardized_model(X, Y):
+    '''Creates a model that uses standard deviation to compare the impact
+    dependent variable(s) have on the independent variable. 
     
     Parameters
     ----------
@@ -99,15 +99,15 @@ def standardized_model(x, y):
     
     The impact one standard deviation of a dependent variable has on the 
     independent variable.
-    ''' 
-    
-    X_standardized = x.copy()
+    '''
+    X_standardized = X.copy()
     for col in X_standardized:
         X_standardized[col] = (X_standardized[col]\
         - X_standardized[col].mean()) / X_standardized[col].std()
-    standardized_model = sm.OLS(y, sm.add_constant(X_standardized))
+        standardized_model = sm.OLS(Y, sm.add_constant(X_standardized))
     standardized_results = standardized_model.fit()
-    return standardized_results.params
-
+    return standardized_results.params                                
+                                
+                                
 
 
