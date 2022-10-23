@@ -11,7 +11,7 @@ Author: Chris Lyons, October 2022
 
 ### Repo Contents
 - [The Golf Courses of Wrath Notebook](https://github.com/lychrst/The_Golf_Courses_of_Wrath/blob/main/The_Golf_Courses_of_Wrath.ipynb)
-- [Up-to-Date Reservoir Forecasting]
+- [Up-to-Date Reservoir Forecasting](https://github.com/lychrst/The_Golf_Courses_of_Wrath/blob/main/Up-to-Date_Reservoir_Forecasting.ipynb)
 - [Definitions](https://github.com/lychrst/The_Golf_Courses_of_Wrath/blob/main/Definitions.ipynb)
 - [Data Loading, Exploration, and Cleaning](https://github.com/lychrst/The_Golf_Courses_of_Wrath/blob/main/Data_Loading_Exploration_and_Cleaning.ipynb)
 - [Model Development](https://github.com/lychrst/The_Golf_Courses_of_Wrath/blob/main/Water_Withdraw_and_Consumption_Model_Development.ipynb)
@@ -93,7 +93,7 @@ Positive values indicate more water withdraw and negative values indicate less w
 The program Facebook Prophet is an open-source data forecasting tool used to analyze time series data.  It is sensitive to the data given to it so if only data from 2000 onward was given, the forecast would have a sharper downward slope than if all of the data since 1937 were given.  In order to be conservative and avoid any accusations of cherry-picking, one of the forecasts used all of the available data.  That forecast had a yearly decline of -152,800 Mgal.  While the r-squared of the train portion of the forecast was high at .976, it failed when it was tested against all of the values since 2021.  It had forecasted a value of 8,324,972 Mgal by 2030 and the Colorado River Basin was already well below that number.  In short, the forecast was too conservative.  The second forecast performed better.  It forecasted a yearly decline of -790,832 Mgal, had a .95 r-squared in the train portion, which dropped to .44 once it was tested with the data from 2021 onwards, and had a mean absolute error of 291,264 Mgal in the train portion and a 563,561 Mgal error in the test portion.  It too erred by being too conservative in its Sep 21, 2022 forecast. 7,872,734 Mgals had been forecasted.  In both models, the lower bound crossed the zero mark by 2030.  In the second one, the lower bound crossed the zero mark in 2025.  If the forecast using data from 2000 onward is accurate, all of the water in Colorado River Basin reservoirs will be gone in ten years - (10)* (-790,832) + 7,081,513 = -826,707. 
 
 
-![Facebook Prophet](/images/Reservoir_Forecast_2000_raw.png?raw=true)
+![Facebook Prophet](/images/Reservoir_Forecast2000_raw.png?raw=true)
 
 ## 2015 Colorado River Basin Water Usage Versus Reservoir and Aquifer Depletion 
 In order to provide an overall picture of the hydrologica cycle for the Colorado River Basin, estimates for groundwater and reservoir depletion and USGS water use categories were compiled and compared to one another.  When available, consumption was used for the USGS categories.  Otherwise withdraw was used.  Agriculture, golf courses, and power plants all had consumption as a categorical option.   Water withdraw had to be used for all other categories.  The 2000 forecast slope was used for reservoir depletion as it was more accurate than the 1937 version. [Groundwater depletion during drought threatens future water security of the Colorado River Basin](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2014GL061055) (Castle, Stephanie L. et. al., *Geophysical Research Letters*, July 2014) was used as a source for the depletion of groundwater.
@@ -103,47 +103,6 @@ The combined total of reservoir and groundwater depletion was 2,270,195 Mgal.  T
 
 
 ![Water_Depletion_Use](/images/Water_Use_Compared_to_Water_Depletion.png?raw=true)
-
-## License  
-
-[MIT](https://choosealicense.com/licenses/mit/)
-
-
-The variables chosen for the per capita model were irrigation with surface water (IR-WSWFr), maximum temperature, PHDI, precipitation, unemployment rate, multi-unit percentage, and metro.  These were chosen because they didn't result in multicollinearity, they contributed to the R-squared of the model, and they were statistically significant.  The coefficient of determination (R-squared) of the chosen model was at 25.8%, which was a significant improvement from where the model started at (15.1% without outliers), but was still low-powered.  Non-normal residuals remained an issue throughout the models development and could not be solved by log scaling. The mean absolute error was at 17.6 gallons per person and the mean squared error was 27.3.   
-
-The Y-intercept for the multiple linear regression model when standardized was 83.7 gallons. One standard deviation of each of the following variables was associated with its corresponding amount of gallon per person domestic water withdraw:
-
-
-* IR-WSWFr       ................................................     9.58
-* Max_temp           ................................................        8.01
-* PHDI                  .........................................................      -6.04
-* Precip                  .......................................................      -5.68
-* unemployment_rate         ............................   -4.13    
-* multi_unit             .................................................   -2.59
-* metro_yes          ................................................   -2.49
-
-Positive values indicate more water withdraw and negative values indicate less water withdraw.  With the exception of irrigation with surface water, all of the most important variables were weather related.  Unemployment was next.  Multi-unit and metro living were significantly less important than weather in this model. 
-
-
-![Per Capita](/hydro2/Per_capita_variables.png?raw=true)
-
-## Facebook Prophet Forecasting
- 
- According to a csv downloaded from the Lincoln Institute of Land Policy, the sources of water for the Colorado River Basin were the lakes Havasu, Mohave, Mead, Powell, Vallecito, and Nighthourse, the reservoirs Navajo, McPhee, Ridgway, Crystal, Morrow Point, Blue Mesa, Taylor Park, Flaming Gorge, Fontenelle, Starvation, Strawberry, and Scofield, the Morelos Dam Diversion, Imperial Diversion Dam, Granby Dam, Heron Dam, Headgate Rock Diversion, Laguna Diversion, Palo Verde, Senator Wash, Jordanelle, Wilard Bay, and Pineview. The US Bureau of Reclamation (USBR) had storage data for every location except for Senator Wash, Palo Verde, Headgate Rock Diversion, Imperial Diversion Dam, and Morelos Dam Diversion. Data for the rest of the reservoirs were downloaded and compiled into a dataset.    Null values existed because some of the reservoirs were older than others and the nulls were converted to zeros.  The data for the reservoirs were downloaded on September 21, of 2022 and therefore was the last date contained within the dataset. At that time, the combined total of all of the reservoirs was 7,081,513 Mgal of water.
-    
-The program Facebook Prophet is an open-source data forecasting tool used to analyze time series data.  It is sensitive to the data given to it so if only data from 2000 onward was given, the forecast would have a sharper downward slope than if all of the data since 1937 were given.  In order to be conservative and avoid any accusations of cherry-picking, one of the forecasts used all of the available data.  That forecast had a yearly decline of -152,800 Mgal.  While the r-squared of the train portion of the forecast was high at .976, it failed when it was tested against all of the values since 2021.  It had forecasted a value of 8,324,972 Mgal by 2030 and the Colorado River Basin was already well below that number.  In short, the forecast was too conservative.  The second forecast performed better.  It forecasted a yearly decline of -790,832 Mgal, had a .95 r-squared in the train portion, which dropped to .44 once it was tested with the data from 2021 onwards, and had a mean absolute error of 291,264 Mgal in the train portion and a 563,561 Mgal error in the test portion.  It too erred by being too conservative in its Sep 21, 2022 forecast. 7,872,734 Mgals had been forecasted.  In both models, the lower bound crossed the zero mark by 2030.  In the second one, the lower bound crossed the zero mark in 2025.  If the forecast using data from 2000 onward is accurate, all of the water in Colorado River Basin reservoirs will be gone in ten years - (10)* (-790,832) + 7,081,513 = -826,707. 
-
-
-![Facebook Prophet](/hydro2/2000_Facebook_Prophet_Forecast.png?raw=true)
-
-## 2015 Colorado River Basin Water Usage Versus Reservoir and Aquifer Depletion 
-In order to provide an overall picture of the hydrologica cycle for the Colorado River Basin, estimates for groundwater and reservoir depletion and USGS water use categories were compiled and compared to one another.  When available, consumption was used for the USGS categories.  Otherwise withdraw was used.  Agriculture, golf courses, and power plants all had consumption as a categorical option.   Water withdraw had to be used for all other categories.  The 2000 forecast slope was used for reservoir depletion as it was more accurate than the 1937 version. [Groundwater depletion during drought threatens future water security of the Colorado River Basin](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2014GL061055) (Castle, Stephanie L. et. al., *Geophysical Research Letters*, July 2014) was used as a source for the depletion of groundwater.
-    
-    
-The combined total of reservoir and groundwater depletion was 2,270,195 Mgal.  The only USGS category that had more water use than that was agriculture at 3,491,549 Mgal.  Domestic was comparible at 1,617,990 Mgal, hence both agriculture and domestic use categories have to be areas of focus when it comes to discussing how to reduce overall water demand.  If one ignored groundwater, the amount needed to be reduced was still well beyond the capacity of any other category to make up for the shortfall.
-
-
-![Water_Depletion_Use](/hydro2/Water_Depletion_versus_Water_Use.png?raw=true)
 
 ## License  
 
