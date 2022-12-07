@@ -34,6 +34,24 @@ def acre_feet_to_Mgal(num):
     Mgal =((num)*325724.1405576) /1000000
     return Mgal
 
+def Mgal_to_acre_feet(num):
+    '''Converts million gallon units into acre feet.
+    
+    Parameters
+    ----------
+    num: Float or int 
+    The number of Mgals being converted.
+    
+    Returns 
+    -------
+    Mgal: Float 
+    The number of acre feet that result from the conversion.
+    '''
+    acre_feet = (num)* 3.0688654702231
+    return acre_feet
+
+
+
 def dashes_to_zeros(col):
     '''Replaces two dashes with zeroes.
     
